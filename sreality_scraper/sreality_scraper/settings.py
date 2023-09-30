@@ -12,21 +12,9 @@ BOT_NAME = "sreality_scraper"
 SPIDER_MODULES = ["sreality_scraper.spiders"]
 NEWSPIDER_MODULE = "sreality_scraper.spiders"
 
-# Splash Setuo
-# SPLASH_URL = 'http://localhost:8050'
-# DOWNLOADER_MIDDLEWARES = {
-#     'scrapy_splash.SplashCookiesMiddleware': 723,
-#     'scrapy_splash.SplashMiddleware': 725,
-#     'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
-# }
-
-# SPIDER_MIDDLEWARES = {
-#     'scrapy_splash.SplashDeduplicateArgsMiddleware': 100,
-# }
-
-# DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
-
-# HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
+#Database
+#You are connected to database "sreality_flats" as user "postgres" via socket in "/var/run/postgresql" at port "5432".
+DATABASE_URI = "postgresql://postgres:postgres@localhost:5432/sreality_flats"
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = "sreality_scraper (+http://www.yourdomain.com)"
@@ -77,9 +65,9 @@ DOWNLOAD_DELAY = 3
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    "sreality_scraper.pipelines.SrealityScraperPipeline": 300,
-#}
+ITEM_PIPELINES = {
+   "sreality_scraper.pipelines.SrealityScraperPipeline": 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

@@ -1,4 +1,5 @@
 import scrapy
+from sreality_scraper.items import SrealityItem
 
 class SrealitySpider(scrapy.Spider):
     name = "sreality"
@@ -12,9 +13,12 @@ class SrealitySpider(scrapy.Spider):
     def parse(self, response):
         resp = response.json()
 
+        sreality_item = SrealityItem()
         for estate in resp["_embedded"]["estates"]:
-            yield {
-                "title": estate["name"],
-                "images": estate["_links"]["images"],
-            }
-            
+            # yield {
+            #     "title": estate["name"],
+            #     "images": estate["_links"]["images"],
+            # }
+            sreality_item["title"] = estate["name"]
+            sreality_item["images"] = estate["_links"]["images"]
+            yield sreality_item

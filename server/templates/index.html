@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Server</title>
+</head>
+<body>
+    <ul>
+        {% for flat in flats %}
+            <li>
+                <h2>{{ flat[0] }}</h2>
+                {% for image in flat[1] %}
+                    <img src="{{ image }}" alt="">
+                {% endfor %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

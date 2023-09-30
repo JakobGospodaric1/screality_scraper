@@ -7,7 +7,6 @@ class SrealitySpider(scrapy.Spider):
 
     custom_settings = {
         "ROBOTSTXT_OBEY": False,
-        "DOWNLOAD_DELAY": 0.5,
     }
 
     def parse(self, response):

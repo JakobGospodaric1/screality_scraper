@@ -12,10 +12,10 @@ import os
 class SrealityScraperPipeline:
     def __init__(self):
         hostname = "db"
-        port = "5432"
-        username = "postgres"
-        password = "mojeGeslo1"
-        database = "sreality_flats"
+        port = os.environ.get('DB_PORT')
+        username = os.environ.get('POSTGRES_USER')
+        password = os.environ.get('POSTGRES_PASSWORD')
+        database = os.environ.get('POSTGRES_DB')
 
         self.connection = psycopg2.connect(host=hostname, port=port,user=username, password=password, dbname=database)
 

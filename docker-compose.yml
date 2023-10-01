@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mojeGeslo1
+      POSTGRES_DB: sreality_flats
+    ports:
+      - "5432:5432"
+  scraper:
+    build: ./sreality_scraper
+    command: scrapy crawl sreality
+    volumes:
+      - ./sreality_scraper:/app
+    depends_on:
+      - db
+  web:
+    build: ./server
+    command: python3 server.py
+    volumes:
+      - ./server:/app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - scraper
+      - db
